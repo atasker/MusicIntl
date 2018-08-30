@@ -1,7 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="26544618-e01d-41db-ab9c-5a3fe8ab6790" name="Default Changelist" comment="" />
+    <list default="true" id="26544618-e01d-41db-ab9c-5a3fe8ab6790" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/callback.php" beforeDir="false" afterPath="$PROJECT_DIR$/callback.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/access-token-with-authorization-code-flow.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/access-token-with-client-credentials-flow.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/changing-return-type.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/controlling-user-playback.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/fetching-catalog-information.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/fetching-spotify-featured-content.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/following-artists-playlists-and-users.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/handling-errors.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/managing-user-library.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/managing-user-playlists.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/managing-user-profiles.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/searching-the-spotify-catalog.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/examples/working-with-scopes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/getting-started.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/method-reference/Request.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/method-reference/Session.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/docs/method-reference/SpotifyWebAPI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/phpcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/phpunit.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/phpunit.xml.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/Session.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/SpotifyWebAPI.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/SpotifyWebAPIAuthException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/SpotifyWebAPIException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/src/cacert.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/RequestTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/SessionTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/SpotifyWebAPITest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/access-token.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/album-tracks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/album.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/albums.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/artist-albums.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/artist-related-artists.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/artist-top-tracks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/artist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/artists.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/audio-analysis.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/audio-features.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/available-genre-seeds.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/categories-list.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/category-playlists.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/category.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/featured-playlists.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/my-playlists.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/new-releases.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/recently-played.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/recommendations.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/refresh-token-no-refresh-token.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/refresh-token.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/search-album.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/snapshot-id.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/top-artists-and-tracks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/track.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/tracks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-albums-contains.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-albums.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-current-playback-info.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-current-track.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-devices.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-followed-artists.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-follows-playlist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-follows.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-playlist-tracks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-playlist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-playlists.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-tracks-contains.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user-tracks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/user.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/jwilsson/spotify-web-api-php/tests/fixtures/users-follows-playlist.json" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +111,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="gitignore" value="1" />
           <entry key="json" value="4" />
           <entry key="lock" value="1" />
           <entry key="php" value="8" />
@@ -27,16 +121,19 @@
         <counts>
           <entry key="JSON" value="5" />
           <entry key="PHP" value="8" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="1444" />
+          <entry key="gitignore" value="24" />
+          <entry key="php" value="1462" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="1444" />
+          <entry key="PHP" value="1462" />
+          <entry key="PLAIN_TEXT" value="24" />
         </counts>
       </usages-collector>
     </session>
@@ -67,8 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+            <state relative-caret-position="90">
+              <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -76,22 +173,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/callback.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="120">
+              <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+            <state relative-caret-position="90">
+              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -100,9 +209,10 @@
         <option value="$PROJECT_DIR$/classes/API.php" />
         <option value="$PROJECT_DIR$/classes/DB.php" />
         <option value="$PROJECT_DIR$/inc.php" />
+        <option value="$PROJECT_DIR$/app.php" />
         <option value="$PROJECT_DIR$/auth.php" />
         <option value="$PROJECT_DIR$/callback.php" />
-        <option value="$PROJECT_DIR$/app.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -118,6 +228,7 @@
     <option name="width" value="1026" />
     <option name="height" value="794" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -171,12 +282,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1535118815365</updated>
-      <workItem from="1535118816509" duration="16189000" />
+      <workItem from="1535118816509" duration="17948000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16189000" />
+    <option name="totallyTimeSpent" value="17948000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="414" y="23" width="1026" height="794" extended-state="0" />
@@ -187,7 +298,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -226,6 +337,13 @@
     <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/DB.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -236,31 +354,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/callback.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/auth.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc.php">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        <state relative-caret-position="90">
+          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/callback.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
         </state>
       </provider>
     </entry>
