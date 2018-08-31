@@ -39,3 +39,5 @@ Thumbs.db
 # Custom #
 ##########
 /vendor/
+/.idea/vcs.xml
+/.idea/workspace.xml
