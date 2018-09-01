@@ -23,5 +23,3 @@ $refreshToken = $session->getRefreshToken();
 $url = "app.php?accessToken=$accessToken&refreshToken=$refreshToken";
 
 header("Location: " . $url );
-
-die();

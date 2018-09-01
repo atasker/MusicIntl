@@ -2,30 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: ATasker
- * Date: 8/24/18
- * Time: 10:30 AM
+ * Date: 8/30/18
+ * Time: 12:08 PM
  */
 
 include 'inc.php';
 
-$session = new SpotifyWebAPI\Session(
-    '13ebd10f15714843aea76c5c7259e516',
-    '93b62230ebd64bcb8640329caaf9c90d',
-    'https://musicintl.herokuapp.com/callback.php'
-    //'http://localhost/MusicIntl/callback.php'
-);
-
-$options = [
-    'scope' => [
-        'user-read-email',
-        'user-read-currently-playing',
-        'playlist-modify-public',
-        'user-library-read',
-        'user-read-recently-played',
-    ],
-];
-
-$auth_url = $session->getAuthorizeUrl($options);
+$message = $_GET['message'];
 
 ?>
 
@@ -44,18 +27,11 @@ $auth_url = $session->getAuthorizeUrl($options);
             letter-spacing: .1rem;
             padding-bottom: 15px;
         }
-        .beta-link {
-            text-decoration: none;
-            font: inherit;
-            color: inherit;
-            size: inherit;
-        }
-        .beta-button {
+        .welcome-message {
             margin: 0 auto;
             font-size: 1.5rem;
             width: 50%;
             font-weight: 300;
-            border: 1px solid black;
             padding: 10px;
         }
         @media (max-width: 1000px) {
@@ -95,26 +71,11 @@ $auth_url = $session->getAuthorizeUrl($options);
         <div class="hero-text">
             InterTracks
         </div>
-        <a id="beta-button" class="beta-link" href="#">
-            <div class="beta-button">
-                Enroll in Beta
-            </div>
-        </a>
+        <div class="welcome-message">
+            <?php echo $message; ?>
+        </div>
     </div>
 </div>
 
 </body>
 </html>
-
-<script type="application/javascript">
-
-    function oauth() {
-        window.open('<?php echo $auth_url; ?>', 'SpotifyOAuth', 'width=320,height=550');
-    }
-    window.onload = function () {
-        document.getElementById('beta-button').onclick = function link() {
-            oauth();
-        }
-    }
-
-</script>
