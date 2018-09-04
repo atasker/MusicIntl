@@ -6,7 +6,7 @@
  * Time: 1:59 PM
  */
 
-require 'vendor/autoload.php';
+include '../inc.php';
 
 class DB {
 
