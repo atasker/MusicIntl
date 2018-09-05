@@ -90,6 +90,10 @@ $auth_url = $session->getAuthorizeUrl($options);
 </head>
 <body>
 
+<div class="admin-link">
+    <a href="admin/adminUsers.php" style="text-decoration: none; color: #FFF; position: fixed; top: 0; right: 0;">Admin</a>
+</div>
+
 <div class="center">
     <div class="center-inner">
         <div class="hero-text">

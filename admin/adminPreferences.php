@@ -6,7 +6,12 @@
  * Time: 6:29 PM
  */
 
-include 'inc.php';
+include '../inc.php';
+
+$current_page = 'preferences';
+$user_id = $_GET['id'];
+$admin = new Admin();
+$email = $admin->getEmail($user_id);
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
@@ -45,54 +50,29 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
         <div class="container">
 
-            <!-- Static navbar -->
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">InterTracks Admin</a>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Users</a></li>
-                            <li class="disabled"><a href="#">Preferences</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div><!--/.container-fluid -->
-            </nav>
+            <?php include_once 'navbar.php'; ?>
 
-            <h2>Users</h2>
+            <h3>Music Preferences for <?= $email; ?></h3>
             <hr>
 
-            <table id="users" class="display" style="width:100%">
+            <table id="tracks" class="display" style="width:100%">
+                <caption>Saved Tracks</caption>
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Access Token</th>
-                    <th>Refresh Token</th>
+                    <th>Track</th>
+                    <th>Artist</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                 $admin = new Admin();
-                $allUsers = $admin->getAllUsers();
-                foreach ($allUsers as $row) {
-                    $id = $row['id'];
-                    $email = $row['email'];
-                    $aToken = $row['accessToken'];
-                    $rToken = $row['refreshToken'];
-                ?>
+                $tracks = $admin->getAllUserTracks($user_id);
+                foreach ($tracks->items as $track) {
+                    $track = $track->track;
+                    ?>
                     <tr>
-                        <td><?php echo $id; ?></td>
-                        <td><?php echo $email; ?></td>
-                        <td><?php echo substr($aToken, 0, 20) . "..."; ?></td>
-                        <td><?php echo substr($rToken, 0, 20) . "..."; ?></td>
+                        <td><?php echo '<a href="' . $track->external_urls->spotify . '">' . $track->name . '</a>'; ?></td>
+                        <td><?php echo $track->artists[0]->name; ?></td>
                     </tr>
                 <?php } //End foreach
                 ?>
@@ -111,7 +91,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
             $(document).ready(function() {
                 // DataTable
-                var table = $('#users').DataTable();
+                var table = $('#tracks').DataTable();
             })
 
         </script>
