@@ -75,7 +75,7 @@ class Admin {
         $api = new SpotifyWebAPI\SpotifyWebAPI();
         $accessToken = $this->getOrRefreshToken($id);
         $api->setAccessToken($accessToken);
-        $tracks = $api->getMySavedTracks();
+        $tracks = $api->getMySavedTracks(['limit' => 50]);
         return $tracks;
     }
 

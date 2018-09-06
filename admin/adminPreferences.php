@@ -61,6 +61,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                 <tr>
                     <th>Track</th>
                     <th>Artist</th>
+                    <th>Added at</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -68,11 +69,13 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                 $admin = new Admin();
                 $tracks = $admin->getAllUserTracks($user_id);
                 foreach ($tracks->items as $track) {
+                    $added_at = date('Y-m-d', strtotime($track->added_at));
                     $track = $track->track;
                     ?>
                     <tr>
                         <td><?php echo '<a href="' . $track->external_urls->spotify . '">' . $track->name . '</a>'; ?></td>
                         <td><?php echo $track->artists[0]->name; ?></td>
+                        <td><?php echo $added_at; ?></td>
                     </tr>
                 <?php } //End foreach
                 ?>
