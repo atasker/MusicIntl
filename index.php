@@ -22,6 +22,7 @@ $options = [
         'playlist-modify-public',
         'user-library-read',
         'user-read-recently-played',
+        'user-read-playback-state'
     ],
 ];
 

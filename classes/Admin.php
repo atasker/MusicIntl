@@ -79,4 +79,12 @@ class Admin {
         return $tracks;
     }
 
+    public function getRecentTracks($id) {
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $accessToken = $this->getOrRefreshToken($id);
+        $api->setAccessToken($accessToken);
+        $tracks = $api->getMyRecentTracks(['limit' => 50]);
+        return $tracks;
+    }
+
 }
