@@ -91,6 +91,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
                     $seconds = $duration % 60;
                     $duration = floor($duration / 60);
+                    $seconds_padded = sprintf("%02d", $seconds);
 
                     $minutes = $duration % 60;
                     $duration = floor($duration / 60);
@@ -102,7 +103,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                         <td><?php echo $artists; ?></td>
                         <td><?php echo $spotify_id; ?></td>
                         <td><a href="<?php echo $preview_url; ?>" target="_blank">Clip</a></td>
-                        <td><?php echo $minutes . ":" . $seconds; ?></td>
+                        <td><?php echo $minutes . ":" . $seconds_padded; ?></td>
                         <td><?php echo $popularity; ?></td>
                     </tr>
                 <?php } //End foreach
