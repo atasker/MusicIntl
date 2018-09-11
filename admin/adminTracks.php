@@ -84,6 +84,17 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                     $preview_url = $row['preview_url'];
                     $duration = $row['duration'];
                     $popularity = $row['popularity'];
+
+                    // Convert milliseconds to minutes:seconds
+                    $uSec = $duration % 1000;
+                    $duration = floor($duration / 1000);
+
+                    $seconds = $duration % 60;
+                    $duration = floor($duration / 60);
+
+                    $minutes = $duration % 60;
+                    $duration = floor($duration / 60);
+
                     ?>
                     <tr>
                         <td><?php echo $id; ?></td>
@@ -91,7 +102,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                         <td><?php echo $artists; ?></td>
                         <td><?php echo $spotify_id; ?></td>
                         <td><a href="<?php echo $preview_url; ?>" target="_blank">Clip</a></td>
-                        <td><?php echo date("H:i:s", $duration);; ?></td>
+                        <td><?php echo $minutes . ":" . $seconds; ?></td>
                         <td><?php echo $popularity; ?></td>
                     </tr>
                 <?php } //End foreach
@@ -132,7 +143,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                             } else if (data == 2) {
                                 alert('Track saved successfully');
                                 window.location.reload();
-                            } else {
+                            } else if (data == 3) {
                                 alert('Incorrect Spotify ID or database error');
                             }
                             $('#new_track').val('');
