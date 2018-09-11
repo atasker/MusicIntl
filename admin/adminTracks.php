@@ -126,7 +126,9 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
             $(document).ready(function() {
                 // DataTable
-                var table = $('#tracks').DataTable();
+                $('#tracks').DataTable( {
+                    "pageLength": 25
+                } );
             })
 
             // Add new track logic

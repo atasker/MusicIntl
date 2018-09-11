@@ -162,12 +162,16 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
             $(document).ready(function() {
                 // DataTable
-                var table = $('#saved_tracks').DataTable();
+                $('#saved_tracks').DataTable( {
+                    "pageLength": 25
+                } );
             })
 
             $(document).ready(function() {
                 // DataTable
-                var table = $('#recent_tracks').DataTable();
+                $('#recent_tracks').DataTable( {
+                    "pageLength": 25
+                } );
             })
 
             $("#tabs").tabs({

@@ -104,7 +104,9 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
             $(document).ready(function() {
                 // DataTable
-                var table = $('#users').DataTable();
+                $('#users').DataTable( {
+                    "pageLength": 25
+                } );
             })
 
         </script>
