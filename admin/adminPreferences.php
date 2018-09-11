@@ -6,7 +6,7 @@
  * Time: 6:29 PM
  */
 
-include '../inc.php';
+include __DIR__ . '/../inc.php';
 
 $current_page = 'preferences';
 $user_id = $_GET['id'];
@@ -104,7 +104,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                                 $track = $track->track;
                                 ?>
                                 <tr>
-                                    <td><?php echo '<a href="' . $track->external_urls->spotify . '">' . $track->name . '</a>'; ?></td>
+                                    <td><?php echo '<a target="_blank" href="' . $track->external_urls->spotify . '">' . $track->name . '</a>'; ?></td>
                                     <td><?php echo $track->artists[0]->name; ?></td>
                                     <td><?php echo $added_at; ?></td>
                                 </tr>

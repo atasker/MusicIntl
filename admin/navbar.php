@@ -24,6 +24,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="../index.php">Home</a></li>
                 <li class="<?= $current_page == 'users' ? 'active' : ''; ?>"><a href="adminUsers.php">Users</a></li>
+                <li class="<?= $current_page == 'tracks' ? 'active' : ''; ?>"><a href="adminTracks.php">Tracks</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->

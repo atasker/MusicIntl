@@ -6,7 +6,7 @@
  * Time: 4:12 PM
  */
 
-include '../inc.php';
+include __DIR__ . '/../inc.php';
 
 class Admin {
 
@@ -49,12 +49,8 @@ class Admin {
             } catch (Exception $e) {
                 // Access Token expired
                 // Is this new session necessary?
-                $session = new SpotifyWebAPI\Session(
-                    '13ebd10f15714843aea76c5c7259e516',
-                    '93b62230ebd64bcb8640329caaf9c90d',
-                    'https://musicintl.herokuapp.com/callback.php'
-                    //'http://localhost/MusicIntl/callback.php'
-                );
+                global $session;
+                include_once __DIR__ . '/../spotify_session.php';
                 // Get new Access Token
                 $session->refreshAccessToken($refreshToken);
                 $newAccessToken = $session->getAccessToken();
@@ -85,6 +81,84 @@ class Admin {
         $api->setAccessToken($accessToken);
         $tracks = $api->getMyRecentTracks(['limit' => 50]);
         return $tracks;
+    }
+
+    public function getAllTracks() {
+        $stmt = $this->conn->db->query("SELECT * FROM tracks");
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
+    public function getRandomUserId() {
+        $stmt = $this->conn->db->query("SELECT id FROM users ORDER BY RAND() LIMIT 1");
+        $results = $stmt->fetch();
+        return $results['id'];
+    }
+
+    public function duplicateTrack($spotify_id) {
+        $stmt = $this->conn->db->query("SELECT * FROM tracks WHERE spotify_id = '$spotify_id'");
+        $results = $stmt->fetch();
+        if ($results) {
+            // Duplicate
+            return true;
+        } else {
+            // Unique
+            return false;
+        }
+    }
+
+    public function saveTrack($input_id) {
+        if ($this->duplicateTrack($input_id)) {
+            // 1 = Duplicate Track
+            return 1;
+        } else {
+            $api = new SpotifyWebAPI\SpotifyWebAPI();
+            $random_id = $this->getRandomUserId();
+            $accessToken = $this->getOrRefreshToken($random_id);
+            $api->setAccessToken($accessToken);
+            $track = $api->getTrack($input_id);
+
+            // Track name
+            $title = $track->name;
+
+            // Artists
+            $artists_array = [];
+            foreach ($track->artists as $artist) {
+                $artists_array[] = $artist->name;
+            }
+            $artists_string = implode(",", $artists_array);
+
+            // Spotify ID
+            $spotify_id = $track->id;
+
+            // Spotify URL
+            $spotify_url = $track->external_urls->spotify;
+
+            // Preview URL
+            $preview_url = $track->preview_url;
+
+            // Duration (ms)
+            $duration = $track->duration_ms;
+
+            // Popularity
+            $popularity = $track->popularity;
+
+            $stmt = $this->conn->db->prepare("INSERT INTO tracks (title, artists, spotify_id, spotify_url, preview_url, duration, popularity) VALUES (:title, :artists_string, :spotify_id, :spotify_url, :preview_url, :duration, :popularity)");
+            $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+            $stmt->bindValue(':artists_string', $artists_string, PDO::PARAM_STR);
+            $stmt->bindValue(':spotify_id', $spotify_id, PDO::PARAM_STR);
+            $stmt->bindValue(':spotify_url', $spotify_url, PDO::PARAM_STR);
+            $stmt->bindValue(':preview_url', $preview_url, PDO::PARAM_STR);
+            $stmt->bindValue(':duration', $duration, PDO::PARAM_STR);
+            $stmt->bindValue(':popularity', $popularity, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                // 2 = Track save successful
+                return 2;
+            } else {
+                // 3 = Incorrect Spotify ID or database error
+                return 3;
+            }
+        }
     }
 
 }

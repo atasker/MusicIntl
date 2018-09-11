@@ -6,7 +6,7 @@
  * Time: 6:29 PM
  */
 
-include '../inc.php';
+include __DIR__ . '/../inc.php';
 
 $current_page = 'users';
 
@@ -90,6 +90,9 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
             </table>
 
         </div>
+
+        <br />
+        <br />
 
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/fh-3.1.4/r-2.2.2/datatables.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

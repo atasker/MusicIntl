@@ -6,7 +6,7 @@
  * Time: 1:59 PM
  */
 
-include '../inc.php';
+include __DIR__ . '/../inc.php';
 
 class DB {
 
