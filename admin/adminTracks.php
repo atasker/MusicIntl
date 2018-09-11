@@ -144,7 +144,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                             } else if (data == 2) {
                                 alert('Track saved successfully');
                                 window.location.reload();
-                            } else if (data == 3) {
+                            } else {
                                 alert('Incorrect Spotify ID or database error');
                             }
                             $('#new_track').val('');
