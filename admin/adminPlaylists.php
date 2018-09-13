@@ -63,7 +63,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
             <div align="right">
                 <span style="font-weight: bold;">Create Playlist&nbsp;&nbsp;</span>
-                <input type="text" name="new_playlist" id="new_playlist" placeholder="Max 50 chars">&nbsp;&nbsp;
+                <input type="text" name="new_playlist" id="new_playlist" placeholder="Name">&nbsp;&nbsp;
                 <a href="#" id="new_playlist_button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size: 1.6rem; vertical-align: middle; color: forestgreen;"></span></a>
                 <hr>
             </div>
@@ -83,11 +83,16 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                 foreach ($allPlaylists as $row) {
                     $id = $row['id'];
                     $name = $row['name'];
+
+                    // Figure out number of tracks in playlist
+                    $playlist = new Playlist();
+                    $tracks = $playlist->getPlaylistTracks($id);
+                    $count = count($tracks);
                     ?>
                     <tr>
                         <td><?php echo $id; ?></td>
                         <td><a href="adminPlaylist.php?id=<?php echo $id; ?>"><?php echo $name; ?></a></td>
-                        <td>11</td>
+                        <td><?php echo $count; ?></td>
                     </tr>
                 <?php } //End foreach
                 ?>
