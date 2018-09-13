@@ -8,7 +8,7 @@
 
 include __DIR__ . '/../inc.php';
 
-$input_id = $_POST['input_id'];
+$name = $_POST['name'];
 
-$admin = new Track();
-echo $admin->saveTrack($input_id);
+$playlist = new Playlist();
+echo $playlist->savePlaylist($name);

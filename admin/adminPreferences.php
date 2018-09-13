@@ -10,7 +10,7 @@ include __DIR__ . '/../inc.php';
 
 $current_page = 'preferences';
 $user_id = $_GET['id'];
-$admin = new Admin();
+$admin = new User();
 $email = $admin->getEmail($user_id);
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
@@ -65,6 +65,14 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                 .ui-button:active, .ui-button.ui-state-active:hover {
                     background-color: mediumblue;
                 }
+
+                table.dataTable thead th {
+                    border-bottom: 0;
+                }
+                table.dataTable.no-footer {
+                    border-bottom: 0;
+                }
+
             </style>
         </head>
 
@@ -97,7 +105,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                             </thead>
                             <tbody>
                             <?php
-                            $admin = new Admin();
+                            $admin = new Track();
                             $tracks = $admin->getAllUserTracks($user_id);
                             foreach ($tracks->items as $track) {
                                 $added_at = date('F j, Y, g:i a', strtotime($track->added_at));
@@ -127,7 +135,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                             </thead>
                             <tbody>
                             <?php
-                            $admin = new Admin();
+                            $admin = new Track();
                             $tracks = $admin->getRecentTracks($user_id);
                             foreach ($tracks->items as $track) {
                                 $played_at = date('F j, Y, g:i a', strtotime($track->played_at));

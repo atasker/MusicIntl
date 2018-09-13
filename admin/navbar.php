@@ -25,6 +25,7 @@
                 <li><a href="../index.php">Home</a></li>
                 <li class="<?= $current_page == 'users' ? 'active' : ''; ?>"><a href="adminUsers.php">Users</a></li>
                 <li class="<?= $current_page == 'tracks' ? 'active' : ''; ?>"><a href="adminTracks.php">Tracks</a></li>
+                <li class="<?= $current_page == 'playlists' ? 'active' : ''; ?>"><a href="adminPlaylists.php">Playlists</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->

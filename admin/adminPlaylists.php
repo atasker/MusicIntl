@@ -8,7 +8,7 @@
 
 include __DIR__ . '/../inc.php';
 
-$current_page = 'tracks';
+$current_page = 'playlists';
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
@@ -58,62 +58,36 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
             <?php include_once 'navbar.php'; ?>
 
-            <h2>Tracks</h2>
+            <h2>Playlists</h2>
             <hr>
 
             <div align="right">
-                <span style="font-weight: bold;">Add Track&nbsp;&nbsp;</span>
-                <input type="text" name="new_track" id="new_track" placeholder="Spotify ID (20 chars)">&nbsp;&nbsp;
-                <a href="#" id="new_track_button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size: 1.6rem; vertical-align: middle; color: forestgreen;"></span></a>
+                <span style="font-weight: bold;">Create Playlist&nbsp;&nbsp;</span>
+                <input type="text" name="new_playlist" id="new_playlist" placeholder="Max 50 chars">&nbsp;&nbsp;
+                <a href="#" id="new_playlist_button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size: 1.6rem; vertical-align: middle; color: forestgreen;"></span></a>
                 <hr>
             </div>
 
-            <table id="tracks" class="display" style="width:100%">
+            <table id="playlists" class="display" style="width:100%">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
-                    <th>Artist(s)</th>
-                    <th>Spotify ID</th>
-                    <th>Preview</th>
-                    <th>Duration</th>
-                    <th>Popularity</th>
+                    <th>Name</th>
+                    <th>No. of tracks</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                $admin = new Track();
-                $allTracks = $admin->getAllTracks();
-                foreach ($allTracks as $row) {
+                $admin = new Playlist();
+                $allPlaylists = $admin->getAllPlaylists();
+                foreach ($allPlaylists as $row) {
                     $id = $row['id'];
-                    $title = $row['title'];
-                    $artists = $row['artists'];
-                    $spotify_id = $row['spotify_id'];
-                    $spotify_url = $row['spotify_url'];
-                    $preview_url = $row['preview_url'];
-                    $duration = $row['duration'];
-                    $popularity = $row['popularity'];
-
-                    // Convert milliseconds to minutes:seconds
-                    $uSec = $duration % 1000;
-                    $duration = floor($duration / 1000);
-
-                    $seconds = $duration % 60;
-                    $duration = floor($duration / 60);
-                    $seconds_padded = sprintf("%02d", $seconds);
-
-                    $minutes = $duration % 60;
-                    $duration = floor($duration / 60);
-
+                    $name = $row['name'];
                     ?>
                     <tr>
                         <td><?php echo $id; ?></td>
-                        <td><a href="<?php echo $spotify_url; ?>" target="_blank"><?php echo $title; ?></a></td>
-                        <td><?php echo $artists; ?></td>
-                        <td><?php echo $spotify_id; ?></td>
-                        <td><a href="<?php echo $preview_url; ?>" target="_blank">Clip</a></td>
-                        <td><?php echo $minutes . ":" . $seconds_padded; ?></td>
-                        <td><?php echo $popularity; ?></td>
+                        <td><a href="adminPlaylist.php?id=<?php echo $id; ?>"><?php echo $name; ?></a></td>
+                        <td>11</td>
                     </tr>
                 <?php } //End foreach
                 ?>
@@ -135,34 +109,34 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
             $(document).ready(function() {
                 // DataTable
-                $('#tracks').DataTable( {
+                $('#playlists').DataTable( {
                     "pageLength": 25
                 } );
             })
 
-            // Add new track logic
-            $( "#new_track_button" ).click(function( event ) {
+            // Add new playlist logic
+            $( "#new_playlist_button" ).click(function( event ) {
                 event.preventDefault();
-                if ( $('#new_track').val() ) {
-                    var input_id = $('#new_track').val();
+                if ( $('#new_playlist').val() ) {
+                    var name = $('#new_playlist').val();
                     $.ajax({
                         type: 'POST',
-                        url: '../ajax/save_track.php',
-                        data: { input_id: input_id },
+                        url: '../ajax/save_playlist.php',
+                        data: { name: name },
                         success:function(data) {
                             if (data == 1) {
-                                alert('This track has already been saved');
+                                alert('There is already a playlist with this name');
                             } else if (data == 2) {
-                                alert('Track saved successfully');
+                                alert('Playlist saved successfully');
                                 window.location.reload();
                             } else {
-                                alert('Incorrect Spotify ID or database error');
+                                alert('Database Error');
                             }
-                            $('#new_track').val('');
+                            $('#new_playlist').val('');
                         }
                     });
                 } else {
-                    alert('Please enter an ID');
+                    alert('Please enter a name');
                 }
             });
 

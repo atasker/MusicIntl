@@ -11,4 +11,6 @@ error_reporting(E_ALL);
 
 require 'vendor/autoload.php';
 require_once 'classes/DB.php';
-require_once 'classes/Admin.php';
+require_once 'classes/Playlist.php';
+require_once 'classes/Track.php';
+require_once 'classes/User.php';

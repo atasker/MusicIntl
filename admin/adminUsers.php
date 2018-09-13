@@ -41,6 +41,15 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
             <title>InterTracks Admin</title>
             <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/fh-3.1.4/r-2.2.2/datatables.min.css"/>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+            <style type="text/css">
+                table.dataTable thead th {
+                    border-bottom: 0;
+                }
+                table.dataTable.no-footer {
+                    border-bottom: 0;
+                }
+            </style>
         </head>
 
         <body>
@@ -64,7 +73,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                 </thead>
                 <tbody>
                 <?php
-                $admin = new Admin();
+                $admin = new User();
                 $allUsers = $admin->getAllUsers();
                 foreach ($allUsers as $row) {
                     $id = $row['id'];
