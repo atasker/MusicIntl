@@ -71,7 +71,6 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
             <table id="playlists" class="display" style="width:100%">
                 <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>No. of tracks</th>
                 </tr>
@@ -90,7 +89,6 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                     $count = count($tracks);
                     ?>
                     <tr>
-                        <td><?php echo $id; ?></td>
                         <td><a href="adminPlaylist.php?id=<?php echo $id; ?>"><?php echo $name; ?></a></td>
                         <td><?php echo $count; ?></td>
                     </tr>

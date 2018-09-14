@@ -108,6 +108,10 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                     </li>
                     <li><a href="#tabs-2">Add New Tracks</a>
                     </li>
+                    <li><a href="#tabs-3">Push Playlist</a>
+                    </li>
+                    <li><a href="#tabs-4">Users</a>
+                    </li>
                 </ul>
                 <div id="tabs-1">
                     <p>
@@ -183,6 +187,68 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                     <br />
                     <button type="button" class="btn" id="add_tracks_button">Add Tracks</button>
                 </div>
+                <div id="tabs-3">
+                    <p>
+                    <table id="users" class="display" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>Add</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $user = new User();
+                        $allUsers = $user->getAllUsers();
+                        foreach ($allUsers as $row) {
+                            $id = $row['id'];
+                            $email = $row['email'];
+                            ?>
+                            <tr>
+                                <td>
+                                    <div align="center">
+                                        <input type="checkbox" id="users_checkbox" value="<?php echo $id; ?>" />
+                                    </div>
+                                </td>
+                                <td><?php echo $email; ?></td>
+                            </tr>
+                        <?php } //End foreach
+                        ?>
+                        </tbody>
+                    </table>
+                    </p>
+                    <br />
+                    <button type="button" class="btn" id="push_playlist_button">Push Playlist</button>
+                </div>
+                <div id="tabs-4">
+                    <p>
+                    <table id="user_playlist" class="display" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Date Pushed</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $playlist = new Playlist();
+                        $playlist_users = $playlist->getPlaylistUsers($playlist_id);
+                        foreach ($playlist_users as $row) {
+                            $id = $row['id'];
+                            $email = $row['email'];
+                            $date_pushed = $row['date_pushed'];
+                            $time_elapsed = AdminHelper::time_elapsed_string($date_pushed);
+                            ?>
+                            <tr>
+                                <td><?php echo $email; ?></td>
+                                <td><?php echo $time_elapsed; ?></td>
+                            </tr>
+                        <?php } //End foreach
+                        ?>
+                        </tbody>
+                    </table>
+                    </p>
+                </div>
             </div>
 
         </div>
@@ -213,19 +279,34 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                 } );
             })
 
+            $(document).ready(function() {
+                // DataTable
+                $('#users').DataTable( {
+                    "pageLength": 25
+                } );
+            })
+
+            $(document).ready(function() {
+                // DataTable
+                $('#user_playlist').DataTable( {
+                    "pageLength": 25
+                } );
+            })
+
             $("#tabs").tabs({
                 activate: function (event, ui) {
                     var active = $('#tabs').tabs('option', 'active');
                 }
             });
 
-            // Add track(s) to playlist
+            // Add Track(s) to playlist
             $( "#add_tracks_button" ).click(function( event ) {
                 event.preventDefault();
                 var playlist_id = <?php echo $playlist_id; ?>;
 
-                // Retrieve all checked track id's
-                var track_array = $("input:checkbox:checked").map(function(){
+                // Retrieve all checked Track Id's
+                // TODO: make this checkbox check specific to those in this table
+                var track_array = $("#add_new_tracks input:checkbox:checked").map(function(){
                     return $(this).val();
                 }).get();
 
@@ -240,13 +321,39 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                                 window.location.reload();
                             } else {
                                 alert('Unable to perform save, contact Angus');
-                                $('input[type=checkbox]').prop('checked',false);
                             }
                         }
                     });
                 } else {
-                    // If no tracks have been checked
-                    alert('Please select at least one track');
+                    // If no Tracks have been checked
+                    alert('Please select at least one Track');
+                }
+            });
+
+            // Push Playlist to selected Users
+            $( "#push_playlist_button" ).click(function( event ) {
+                event.preventDefault();
+                var playlist_id = <?php echo $playlist_id; ?>;
+                var name = "<?php echo $name; ?>";
+
+                // Retrieve all checked User Id's
+                var user_array = $("#users input:checkbox:checked").map(function(){
+                    return $(this).val();
+                }).get();
+
+                if (user_array.length > 0) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '../ajax/push_playlist.php',
+                        data: { user_array: user_array, playlist_id: playlist_id, name: name },
+                        success:function(data) {
+                            alert(data);
+                            $('input[type=checkbox]').prop('checked',false);
+                        }
+                    });
+                } else {
+                    // If no Users have been checked
+                    alert('Please select at least one User');
                 }
             });
 

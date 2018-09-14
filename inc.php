@@ -14,3 +14,4 @@ require_once 'classes/DB.php';
 require_once 'classes/Playlist.php';
 require_once 'classes/Track.php';
 require_once 'classes/User.php';
+require_once 'classes/AdminHelper.php';

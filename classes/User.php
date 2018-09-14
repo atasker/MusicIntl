@@ -33,7 +33,6 @@ class User {
     }
 
     public function getOrRefreshToken($id) {
-        // Need to add refresh logic
         $stmt = $this->conn->db->query("SELECT accessToken, refreshToken FROM users WHERE id = $id");
         $results = $stmt->fetch();
         if ($results) {
