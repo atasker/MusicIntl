@@ -15,7 +15,7 @@ $message = $_GET['message'];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>InterTracks</title>
+    <title>The Caravan</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700" rel="stylesheet">
     <style type="text/css">
         body {
@@ -73,7 +73,7 @@ $message = $_GET['message'];
 <div class="center">
     <div class="center-inner">
         <div class="hero-text">
-            InterTracks
+            The Caravan
         </div>
         <div class="welcome-message">
             <?php echo $message; ?>

@@ -28,7 +28,7 @@ $auth_url = $session->getAuthorizeUrl($options);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>InterTracks</title>
+    <title>The Caravan</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700" rel="stylesheet">
     <style type="text/css">
         body {
@@ -93,7 +93,7 @@ $auth_url = $session->getAuthorizeUrl($options);
 <div class="center">
     <div class="center-inner">
         <div class="hero-text">
-            InterTracks
+            The Caravan
         </div>
         <a id="beta-button" class="beta-link" href="#">
             <div class="beta-button">
