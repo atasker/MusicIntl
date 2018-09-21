@@ -56,7 +56,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>The Caravan Admin</title>
+            <title>The Caravan | Admin</title>
             <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700" rel="stylesheet">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
             <style type="text/css">
