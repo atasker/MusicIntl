@@ -79,6 +79,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
                 <div class="col-md-6">
                     <p>
+                        <h4><span style="font-weight: 700;">Internal ID:</span> <span style="font-weight: 300;"><?php echo $track_id; ?></span></h4>
                         <h4><span style="font-weight: 700;">Artist(s):</span> <span style="font-weight: 300;"><?php echo $track_info['artists']; ?></span></h4>
                         <h4><span style="font-weight: 700;">Spotify ID:</span> <span style="font-weight: 300;"><?php echo $track_info['spotify_id']; ?></span></h4>
                         <h4><span style="font-weight: 700;">Spotify URL:</span> <span style="font-weight: 300;"><a href="<?php echo $track_info['spotify_url']; ?>" target="_blank">Link</a></span></h4>
