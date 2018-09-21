@@ -72,4 +72,10 @@ class User {
         return $results['id'];
     }
 
+    public function userPlaylistCount($id) {
+        $stmt = $this->conn->db->query("SELECT COUNT(*) FROM user_playlist WHERE user_id = $id");
+        $results = $stmt->fetch();
+        return $results[0];
+    }
+
 }

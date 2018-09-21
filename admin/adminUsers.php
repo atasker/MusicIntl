@@ -68,11 +68,8 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
             <table id="users" class="display" style="width:100%">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Access Token</th>
-                    <th>Refresh Token</th>
-                    <th>Preferences</th>
+                    <th>Email (click for music preferences)</th>
+                    <th>No. of Playlists pushed</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -82,20 +79,11 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                 foreach ($allUsers as $row) {
                     $id = $row['id'];
                     $email = $row['email'];
-                    $aToken = $row['accessToken'];
-                    $rToken = $row['refreshToken'];
+                    $playlist_count = $admin->userPlaylistCount($id);
                 ?>
                     <tr>
-                        <td><?php echo $id; ?></td>
-                        <td><?php echo $email; ?></td>
-                        <td><?php echo substr($aToken, 0, 20) . "..."; ?></td>
-                        <td><?php echo substr($rToken, 0, 20) . "..."; ?></td>
-                        <td><a href="adminPreferences.php?id=<?= $id; ?>">
-                                <button type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
-                                </button>
-                            </a>
-                        </td>
+                        <td><a href="adminPreferences.php?id=<?= $id; ?>"><?php echo $email; ?></a></td>
+                        <td><?php echo $playlist_count; ?></td>
                     </tr>
                 <?php } //End foreach
                 ?>

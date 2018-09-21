@@ -61,13 +61,13 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                     border: none;
                 }
                 .ui-widget-content a {
-                    color: mediumblue;
+                    color: #337ab7;
                     text-decoration: none;
                 }
                 .ui-state-active, .ui-widget-content .ui-state-active,
                 .ui-widget-header .ui-state-active, a.ui-button:active,
                 .ui-button:active, .ui-button.ui-state-active:hover {
-                    background-color: mediumblue;
+                    background-color: #337ab7;
                 }
 
                 table.dataTable thead th {
