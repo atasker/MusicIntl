@@ -39,10 +39,14 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
         <html>
         <head>
             <title>The Caravan Admin</title>
+            <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/fh-3.1.4/r-2.2.2/datatables.min.css"/>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
             <style type="text/css">
+                body {
+                    font-family: 'Muli', sans-serif;
+                }
                 table.dataTable thead th {
                     border-bottom: 0;
                 }
@@ -71,13 +75,11 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
             <table id="tracks" class="display" style="width:100%">
                 <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Title</th>
                     <th>Artist(s)</th>
-                    <th>Spotify ID</th>
+                    <th>Spotify URL</th>
                     <th>Preview</th>
                     <th>Duration</th>
-                    <th>Popularity</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -88,11 +90,9 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                     $id = $row['id'];
                     $title = $row['title'];
                     $artists = $row['artists'];
-                    $spotify_id = $row['spotify_id'];
                     $spotify_url = $row['spotify_url'];
                     $preview_url = $row['preview_url'];
                     $duration = $row['duration'];
-                    $popularity = $row['popularity'];
 
                     // Convert milliseconds to minutes:seconds
                     $uSec = $duration % 1000;
@@ -107,13 +107,11 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
                     ?>
                     <tr>
-                        <td><?php echo $id; ?></td>
-                        <td><a href="<?php echo $spotify_url; ?>" target="_blank"><?php echo $title; ?></a></td>
+                        <td><a href="adminTrack.php?id=<?php echo $id; ?>"><?php echo $title; ?></a></td>
                         <td><?php echo $artists; ?></td>
-                        <td><?php echo $spotify_id; ?></td>
+                        <td><a href="<?php echo $spotify_url; ?>" target="_blank">Link</a></td>
                         <td><a href="<?php echo $preview_url; ?>" target="_blank">Clip</a></td>
                         <td><?php echo $minutes . ":" . $seconds_padded; ?></td>
-                        <td><?php echo $popularity; ?></td>
                     </tr>
                 <?php } //End foreach
                 ?>

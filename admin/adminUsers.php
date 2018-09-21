@@ -39,10 +39,14 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
         <html>
         <head>
             <title>The Caravan Admin</title>
+            <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/fh-3.1.4/r-2.2.2/datatables.min.css"/>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
             <style type="text/css">
+                body {
+                    font-family: 'Muli', sans-serif;
+                }
                 table.dataTable thead th {
                     border-bottom: 0;
                 }

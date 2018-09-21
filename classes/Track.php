@@ -98,6 +98,9 @@ class Track {
             $stmt->bindValue(':duration', $duration, PDO::PARAM_STR);
             $stmt->bindValue(':popularity', $popularity, PDO::PARAM_INT);
             if ($stmt->execute()) {
+                // Notify user if this fails, currently nothing happens (or there'll be a fatal error).
+                $track_features = new TrackFeatures();
+                $track_features->saveTrackFeatures($api, $spotify_id);
                 // 2 = Track save successful
                 return 2;
             } else {
@@ -105,6 +108,12 @@ class Track {
                 return 3;
             }
         }
+    }
+
+    public function getTrack($track_id) {
+        $stmt = $this->conn->db->query("SELECT * FROM tracks WHERE id = $track_id");
+        $result = $stmt->fetch();
+        return $result;
     }
 
 }

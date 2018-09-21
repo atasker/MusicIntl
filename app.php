@@ -26,6 +26,7 @@ $results = $stmt->fetchAll();
 if (count($results) >= 1) {
     $message = "It looks like you've already enrolled!";
 } else {
+    // TODO: Move this logic (below) into User class as 'saveUser' function
     $conn2 = new DB();
     $stmt2 = $conn2->db->query("INSERT INTO users (email, accessToken, refreshToken) VALUES ('$email', '$accessToken', '$refreshToken')");
     if ($stmt2) {
