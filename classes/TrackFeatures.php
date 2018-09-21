@@ -47,4 +47,17 @@ class TrackFeatures {
         return $result;
     }
 
+//    public function seedTrackFeatures() {
+//        $api = new SpotifyWebAPI\SpotifyWebAPI();
+//        $user = new User();
+//        $random_id = $user->getRandomUserId();
+//        $accessToken = $user->getOrRefreshToken($random_id);
+//        $api->setAccessToken($accessToken);
+//        $stmt = $this->conn->db->query("SELECT spotify_id FROM tracks");
+//        $results = $stmt->fetchAll();
+//        foreach ($results as $result) {
+//            $this->saveTrackFeatures($api, $result['spotify_id']);
+//        }
+//    }
+
 }
