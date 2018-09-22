@@ -23,7 +23,11 @@ class FaceDetect extends FaceDetection {
     }
 
     public function analyzeFace() {
-        $face = $this->faceDetect->analyzeAll()->getFaces();
+        try {
+            $face = $this->faceDetect->analyzeAll()->getFaces();
+        } catch (Exception $e) {
+            return 'Caught exception: '.  $e->getMessage(). "\n";
+        }
         $array = json_decode($face, true);
         return $array;
     }
