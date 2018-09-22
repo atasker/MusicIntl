@@ -16,3 +16,4 @@ require_once 'classes/Track.php';
 require_once 'classes/User.php';
 require_once 'classes/AdminHelper.php';
 require_once 'classes/TrackFeatures.php';
+require_once 'classes/FaceDetect.php';
