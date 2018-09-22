@@ -8,27 +8,21 @@
 
 include __DIR__ . '/../inc.php';
 
-use Ridvanbaluyos\Face\FaceDetection as FaceDetection;
-$face = new FaceDetection("http://img2.timeinc.net/people/i/2014/database/140831/justin-bieber-300.jpg");
-$analyze = $face->analyzeAll();
-print_r($analyze);
-die();
-
-//$face = new FaceDetect("http://img2.timeinc.net/people/i/2014/database/140831/justin-bieber-300.jpg");
-//$analyze = $face->analyzeFace();
-//print_r($face);
-//die();
-//$gender = $analyze[0]['faceAttributes']['gender'];
-//$age = $analyze[0]['faceAttributes']['age'];
-//$emotion = $analyze[0]['faceAttributes']['emotion']; // Array
-//$smile = $analyze[0]['faceAttributes']['smile'];
-//$hair = $analyze[0]['faceAttributes']['hair']; // Array
-//$facialHair = $analyze[0]['faceAttributes']['facialHair']; // Array
-//$glasses = $analyze[0]['faceAttributes']['glasses'];
-//$exposure = $analyze[0]['faceAttributes']['exposure']; // Array
-//$makeup = $analyze[0]['faceAttributes']['makeup']; // Array
-//$accessories = $analyze[0]['faceAttributes']['accessories']; // Array
-//$occlusion = $analyze[0]['faceAttributes']['occlusion']; // Array
+$image = ['url' => 'http://img2.timeinc.net/people/i/2014/database/140831/justin-bieber-300.jpg'];
+$face = new FaceDetect($image);
+$get_face = $face->analyzeAll()->getFaces();
+$analyze = json_decode($get_face, true);
+$gender = $analyze[0]['faceAttributes']['gender'];
+$age = $analyze[0]['faceAttributes']['age'];
+$emotion = $analyze[0]['faceAttributes']['emotion']; // Array
+$smile = $analyze[0]['faceAttributes']['smile'];
+$hair = $analyze[0]['faceAttributes']['hair']; // Array
+$facialHair = $analyze[0]['faceAttributes']['facialHair']; // Array
+$glasses = $analyze[0]['faceAttributes']['glasses'];
+$exposure = $analyze[0]['faceAttributes']['exposure']; // Array
+$makeup = $analyze[0]['faceAttributes']['makeup']; // Array
+$accessories = $analyze[0]['faceAttributes']['accessories']; // Array
+$occlusion = $analyze[0]['faceAttributes']['occlusion']; // Array
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
@@ -77,14 +71,14 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
                     var data = new google.visualization.arrayToDataTable([
                         ['Emotion', 'Score'],
-                        ["Anger", emotions_array['anger']],
-                        ["Contempt", emotions_array['contempt']],
-                        ["Disgust", emotions_array['disgust']],
-                        ["Fear", emotions_array['fear']],
-                        ['Happiness', emotions_array['happiness']],
-                        ['Neutral', emotions_array['neutral']],
-                        ['Sadness', emotions_array['sadness']],
-                        ['Surprise', emotions_array['surprise']]
+                        ["Anger" + " " + emotions_array['anger'], emotions_array['anger']],
+                        ["Contempt" + " " + emotions_array['contempt'], emotions_array['contempt']],
+                        ["Disgust" + " " + emotions_array['disgust'], emotions_array['disgust']],
+                        ["Fear" + " " + emotions_array['fear'], emotions_array['fear']],
+                        ['Happiness' + " " + emotions_array['happiness'], emotions_array['happiness']],
+                        ['Neutral' + " " + emotions_array['neutral'], emotions_array['neutral']],
+                        ['Sadness' + " " + emotions_array['sadness'], emotions_array['sadness']],
+                        ['Surprise' + " " + emotions_array['surprise'], emotions_array['surprise']]
                     ]);
 
                     var options = {
