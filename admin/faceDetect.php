@@ -10,17 +10,17 @@ include __DIR__ . '/../inc.php';
 
 $face = new FaceDetect("http://img2.timeinc.net/people/i/2014/database/140831/justin-bieber-300.jpg");
 $analyze = $face->analyzeFace();
-$gender = $analyze[0]['faceAttributes']['gender'];
-$age = $analyze[0]['faceAttributes']['age'];
-$emotion = $analyze[0]['faceAttributes']['emotion']; // Array
-$smile = $analyze[0]['faceAttributes']['smile'];
-$hair = $analyze[0]['faceAttributes']['hair']; // Array
-$facialHair = $analyze[0]['faceAttributes']['facialHair']; // Array
-$glasses = $analyze[0]['faceAttributes']['glasses'];
-$exposure = $analyze[0]['faceAttributes']['exposure']; // Array
-$makeup = $analyze[0]['faceAttributes']['makeup']; // Array
-$accessories = $analyze[0]['faceAttributes']['accessories']; // Array
-$occlusion = $analyze[0]['faceAttributes']['occlusion']; // Array
+$gender = $analyze['0']['faceAttributes']['gender'];
+$age = $analyze['0']['faceAttributes']['age'];
+$emotion = $analyze['0']['faceAttributes']['emotion']; // Array
+$smile = $analyze['0']['faceAttributes']['smile'];
+$hair = $analyze['0']['faceAttributes']['hair']; // Array
+$facialHair = $analyze['0']['faceAttributes']['facialHair']; // Array
+$glasses = $analyze['0']['faceAttributes']['glasses'];
+$exposure = $analyze['0']['faceAttributes']['exposure']; // Array
+$makeup = $analyze['0']['faceAttributes']['makeup']; // Array
+$accessories = $analyze['0']['faceAttributes']['accessories']; // Array
+$occlusion = $analyze['0']['faceAttributes']['occlusion']; // Array
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
 
