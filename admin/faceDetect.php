@@ -10,7 +10,7 @@ include __DIR__ . '/../inc.php';
 
 $face = new FaceDetect("http://img2.timeinc.net/people/i/2014/database/140831/justin-bieber-300.jpg");
 $analyze = $face->analyzeFace();
-print_r($analyze);
+print_r($face);
 die();
 $gender = $analyze[0]['faceAttributes']['gender'];
 $age = $analyze[0]['faceAttributes']['age'];
