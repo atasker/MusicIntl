@@ -8,7 +8,7 @@
 
 include __DIR__ . '/../inc.php';
 
-$image = ['url' => 'http://img2.timeinc.net/people/i/2014/database/140831/justin-bieber-300.jpg'];
+$image = ['url' => 'https://media.glamour.com/photos/5696d70301ed531c6f00b97d/master/w_1280,c_limit/sex-love-life-2015-05-woman-1-main.jpg'];
 $face = new FaceDetect($image);
 $get_face = $face->analyzeAll()->getFaces();
 $analyze = json_decode($get_face, true);
@@ -16,12 +16,20 @@ $gender = $analyze[0]['faceAttributes']['gender'];
 $age = $analyze[0]['faceAttributes']['age'];
 $emotion = $analyze[0]['faceAttributes']['emotion']; // Array
 $smile = $analyze[0]['faceAttributes']['smile'];
-$hair = $analyze[0]['faceAttributes']['hair']; // Array
-$facialHair = $analyze[0]['faceAttributes']['facialHair']; // Array
 $glasses = $analyze[0]['faceAttributes']['glasses'];
-$exposure = $analyze[0]['faceAttributes']['exposure']; // Array
+$facialHair = $analyze[0]['faceAttributes']['facialHair']; // Array
+// Computing dominant hair color (highest confidence rating)
+$hair = $analyze[0]['faceAttributes']['hair']['hairColor']; // Array
+$max = ['', 0];
+foreach ($hair as $color) {
+    if ($color['confidence'] > $max[1]) {
+        $max[0] = $color['color'];
+        $max[1] = $color['confidence'];
+    }
+}
 $makeup = $analyze[0]['faceAttributes']['makeup']; // Array
 $accessories = $analyze[0]['faceAttributes']['accessories']; // Array
+$exposure = $analyze[0]['faceAttributes']['exposure']; // Array
 $occlusion = $analyze[0]['faceAttributes']['occlusion']; // Array
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
@@ -59,6 +67,12 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
             <style type="text/css">
                 body {
                     font-family: 'Muli', sans-serif;
+                }
+                .circle {
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 50%;
+                    display: inline-block;
                 }
             </style>
 
@@ -111,10 +125,170 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
             <h2>Face Analysis</h2>
             <hr>
 
-            <div class="row">
+            <div align="right">
+                <span style="font-weight: bold;">Image URL&nbsp;&nbsp;</span>
+                <input type="text" name="face_url" id="face_url" placeholder="">&nbsp;&nbsp;
+                <a href="#" id="face_url_button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size: 1.6rem; vertical-align: middle; color: forestgreen;"></span></a>
+                <hr>
+            </div>
 
-                <div class="col-md-12">
-                    <div id="top_x_div" style="width: 800px; height: 600px;"></div>
+            <div class="row" style="padding-bottom: 40px;">
+
+                <div class="col-md-6">
+                    <div id="top_x_div" style="width: 800px; height: 400px;"></div>
+                </div>
+
+                <div class="col-md-6" align="right">
+                    <img src="<?php echo $image['url']; ?>" height="200" style="" />
+                    <h5><span style="font-weight: 700;">Gender:</span> <span style="font-weight: 300;"><?php echo ucfirst($gender); ?></span></h5>
+                    <h5><span style="font-weight: 700;">Age:</span> <span style="font-weight: 300;"><?php echo $age; ?></span></h5>
+                </div>
+
+            </div>
+
+            <div class="row" style="padding-bottom: 10px;">
+
+                <div class="col-md-6">
+                    <div class="card text-center" style="width: 100%; height: 15rem; border: 0.5px solid #C4C4C4; padding: 25px;">
+                        <div class="card-body">
+                            <h1><?php echo ($smile == 1 ? "Yes" : $smile); ?></h1>
+                            <h4 class="card-title" style="font-weight: 700;">Smile</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card text-center" style="width: 100%; height: 15rem; border: 0.5px solid #C4C4C4; padding: 25px;">
+                        <div class="card-body">
+                            <h1><?php echo (strpos($glasses, 'No') !== false) ? "No" : "Yes"; ?></h1>
+                            <h4 class="card-title" style="font-weight: 700;">Glasses</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" style="padding-bottom: 10px;">
+
+                <div class="col-md-6">
+                    <h2>Hair</h2>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3><?php echo ($max[0] == 'blond' ? ucfirst($max[0]) . "e" : ucfirst($max[0])); ?></h3>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="circle" style="background-color: <?php echo ($max[0] == 'blond' ? "#FFFACD" : $max[0]); ?>"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Facial Hair</h2>
+                    <hr>
+                    <?php
+                    foreach ($facialHair as $key => $value) {
+                        echo "<div class='row'>";
+                        echo "    <div class='col-md-6'>";
+                        echo "        <h4>" . ucfirst($key) . ":" .  "</h4>";
+                        echo "    </div>";
+                        echo "    <div class='col-md-6'>";
+                        echo "        <h4>" . $value . "</h4>";
+                        echo "    </div>";
+                        echo "</div>";
+                    }
+                    ?>
+                </div>
+
+            </div>
+
+            <div class="row" style="padding-bottom: 10px;">
+
+                <div class="col-md-6">
+                    <h2>Makeup</h2>
+                    <hr>
+                    <?php
+                    if (!empty($makeup)) {
+                        foreach ($makeup as $key => $value) {
+                            echo "<div class='row'>";
+                            echo "    <div class='col-md-6'>";
+                            echo "        <h4>" . ucfirst($key) . ":" .  "</h4>";
+                            echo "    </div>";
+                            echo "    <div class='col-md-6'>";
+                            echo "        <h4>" . $value . "</h4>";
+                            echo "    </div>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<h4>No Makeup Detected</h4>";
+                    }
+                    ?>
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Accessories</h2>
+                    <hr>
+                    <?php
+                    if (!empty($accessories)) {
+                        foreach ($accessories as $accessory) {
+                            echo "<div class='row'>";
+                            echo "    <div class='col-md-6'>";
+                            echo "        <h4>" . ucfirst($accessory['type']) . ":" .  "</h4>";
+                            echo "    </div>";
+                            echo "    <div class='col-md-6'>";
+                            echo "        <h4>" . $accessory['confidence'] . "</h4>";
+                            echo "    </div>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<h4>No Accessories Detected</h4>";
+                    }
+                    ?>
+                </div>
+
+            </div>
+
+            <div class="row" style="padding-bottom: 10px;">
+
+                <div class="col-md-6">
+                    <h2>Exposure</h2>
+                    <hr>
+                    <?php
+                    if (!empty($exposure)) {
+                        foreach ($exposure as $key => $value) {
+                            echo "<div class='row'>";
+                            echo "    <div class='col-md-6'>";
+                            echo "        <h4>" . ucfirst($key) . ":" .  "</h4>";
+                            echo "    </div>";
+                            echo "    <div class='col-md-6'>";
+                            echo "        <h4>" . $value . "</h4>";
+                            echo "    </div>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<h4>No Exposure Data</h4>";
+                    }
+                    ?>
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Occlusion</h2>
+                    <hr>
+                    <?php
+                    if (!empty($occlusion)) {
+                        foreach ($occlusion as $key => $value) {
+                            echo "<div class='row'>";
+                            echo "    <div class='col-md-6'>";
+                            echo "        <h4>" . ucfirst($key) . ":" .  "</h4>";
+                            echo "    </div>";
+                            echo "    <div class='col-md-6'>";
+                            echo "        <h4>" . (empty($value) ? "No" : $value) . "</h4>";
+                            echo "    </div>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<h4>No Occlusion Data</h4>";
+                    }
+                    ?>
                 </div>
 
             </div>
