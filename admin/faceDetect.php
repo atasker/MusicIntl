@@ -8,10 +8,25 @@
 
 include __DIR__ . '/../inc.php';
 
-$image = ['url' => 'https://media.glamour.com/photos/5696d70301ed531c6f00b97d/master/w_1280,c_limit/sex-love-life-2015-05-woman-1-main.jpg'];
+if (isset($_GET['image'])) {
+    $image = ['url' => $_GET['image']];
+} else {
+    $image = ['url' => 'https://media.glamour.com/photos/5696d70301ed531c6f00b97d/master/w_1280,c_limit/sex-love-life-2015-05-woman-1-main.jpg'];
+}
+
 $face = new FaceDetect($image);
 $get_face = $face->analyzeAll()->getFaces();
 $analyze = json_decode($get_face, true);
+
+// If API failed to process image, load a default face
+
+if (empty($analyze)) {
+    $default_image = ['url' => 'https://media.glamour.com/photos/5696d70301ed531c6f00b97d/master/w_1280,c_limit/sex-love-life-2015-05-woman-1-main.jpg'];
+    $default_face = new FaceDetect($default_image);
+    $get_face = $default_face->analyzeAll()->getFaces();
+    $analyze = json_decode($get_face, true);
+}
+
 $gender = $analyze[0]['faceAttributes']['gender'];
 $age = $analyze[0]['faceAttributes']['age'];
 $emotion = $analyze[0]['faceAttributes']['emotion']; // Array
@@ -62,6 +77,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
         <head>
             <title>The Caravan | Admin</title>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700" rel="stylesheet">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
             <style type="text/css">
@@ -125,12 +141,24 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
             <h2>Face Analysis</h2>
             <hr>
 
-            <div align="right">
-                <span style="font-weight: bold;">Image URL&nbsp;&nbsp;</span>
-                <input type="text" name="face_url" id="face_url" placeholder="">&nbsp;&nbsp;
-                <a href="#" id="face_url_button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size: 1.6rem; vertical-align: middle; color: forestgreen;"></span></a>
-                <hr>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <p style="color: crimson;">Image URL must lead to either JPG or PNG<br />
+                    If the API cannot process the image, a default face will be loaded</p>
+                </div>
+
+                <div class="col-md-6">
+                    <div align="right">
+                        <span style="font-weight: bold;">Image URL&nbsp;&nbsp;</span>
+                        <input type="text" name="face_url" id="face_url" placeholder="JPG, PNG">&nbsp;&nbsp;
+                        <a href="" id="face_url_button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size: 1.6rem; vertical-align: middle; color: forestgreen;"></span></a>
+                    </div>
+                </div>
+
             </div>
+
+            <hr>
 
             <div class="row" style="padding-bottom: 40px;">
 
@@ -139,7 +167,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                 </div>
 
                 <div class="col-md-6" align="right">
-                    <img src="<?php echo $image['url']; ?>" height="200" style="" />
+                    <img src="<?php echo (!isset($default_image) ? $image['url'] : $default_image['url']); ?>" height="200" style="" />
                     <h5><span style="font-weight: 700;">Gender:</span> <span style="font-weight: 300;"><?php echo ucfirst($gender); ?></span></h5>
                     <h5><span style="font-weight: 700;">Age:</span> <span style="font-weight: 300;"><?php echo $age; ?></span></h5>
                 </div>
@@ -214,7 +242,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                             echo "        <h4>" . ucfirst($key) . ":" .  "</h4>";
                             echo "    </div>";
                             echo "    <div class='col-md-6'>";
-                            echo "        <h4>" . $value . "</h4>";
+                            echo "        <h4>" . (empty($value) ? "No" : $value) . "</h4>";
                             echo "    </div>";
                             echo "</div>";
                         }
@@ -299,6 +327,35 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
         <br />
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+
+            $( "#face_url_button" ).click(function( event ) {
+                event.preventDefault();
+                if ( $('#face_url').val() ) {
+                    var image = $('#face_url').val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '../ajax/change_face.php',
+                        data: { image: image },
+                        success:function(data) {
+                            if (data == 0) {
+                                alert("This URL is not an image")
+                            } else if (data == 1) {
+                                alert("Invalid URL");
+                            } else {
+                                var url = window.location.href.split('?')[0] + "?image=" + data;
+                                window.location.href = url;
+                            }
+                            $('#face_url').val('');
+                        }
+                    });
+                } else {
+                    alert('Please enter a URL');
+                }
+            });
+
+        </script>
 
         </body>
         </html>
