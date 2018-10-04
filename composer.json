@@ -1,6 +1,5 @@
 {
     "require": {
-        "jwilsson/spotify-web-api-php": "^2.5",
-        "vlucas/phpdotenv": "^2.5"
+        "jwilsson/spotify-web-api-php": "^2.5"
     }
 }
