@@ -14,7 +14,7 @@ if (isset($_GET['image'])) {
     $image = ['url' => 'https://media.glamour.com/photos/5696d70301ed531c6f00b97d/master/w_1280,c_limit/sex-love-life-2015-05-woman-1-main.jpg'];
 }
 
-$face = new FaceDetect($image);
+$face = new Face($image);
 $get_face = $face->analyzeAll()->getFaces();
 $analyze = json_decode($get_face, true);
 
@@ -22,7 +22,7 @@ $analyze = json_decode($get_face, true);
 
 if (empty($analyze)) {
     $default_image = ['url' => 'https://media.glamour.com/photos/5696d70301ed531c6f00b97d/master/w_1280,c_limit/sex-love-life-2015-05-woman-1-main.jpg'];
-    $default_face = new FaceDetect($default_image);
+    $default_face = new Face($default_image);
     $get_face = $default_face->analyzeAll()->getFaces();
     $analyze = json_decode($get_face, true);
 }

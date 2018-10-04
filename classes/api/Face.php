@@ -8,7 +8,7 @@
 
 include __DIR__ . '/../../inc.php';
 
-class FaceDetect {
+class Face {
 
     private $url;
     private $subscriptionKey;
