@@ -6,7 +6,7 @@
  * Time: 2:37 PM
  */
 
-include __DIR__ . '/../inc.php';
+include __DIR__ . '/../../inc.php';
 
 class API {
 

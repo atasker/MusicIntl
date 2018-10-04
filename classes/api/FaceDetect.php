@@ -6,7 +6,7 @@
  * Time: 12:13 PM
  */
 
-include __DIR__ . '/../inc.php';
+include __DIR__ . '/../../inc.php';
 
 class FaceDetect {
 
@@ -18,8 +18,8 @@ class FaceDetect {
     private $returnFaceAttributes = "";
 
     public function __construct($image) {
-        $this->subscriptionKey = "c7fefadc3ffb420b992af9f53f64cbae";
-        $this->url = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+        $this->subscriptionKey = "4b60a27087dd44a683bfca479ee12eba";
+        $this->url = "https://eastus.api.cognitive.microsoft.com/face/v1.0/detect";
         $this->image = $image;
     }
 
