@@ -22,8 +22,3 @@ require_once 'classes/AdminHelper.php';
 require_once 'classes/TrackFeatures.php';
 require_once 'classes/api/Face.php';
 require_once 'classes/api/API.php';
-
-// Load Sensitive Environment Variables
-
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();

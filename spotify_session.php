@@ -7,7 +7,8 @@
  */
 
 $session = new SpotifyWebAPI\Session(
-    getenv('SPOTIFY_CLIENT_ID'),
-    getenv('SPOTIFY_CLIENT_SECRET'),
-    getenv('SPOTIFY_REDIRECT_URI')
+    '13ebd10f15714843aea76c5c7259e516',
+    '93b62230ebd64bcb8640329caaf9c90d',
+    'https://musicintl.herokuapp.com/callback.php'
+    //'http://localhost/MusicIntl/callback.php'
 );
