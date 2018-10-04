@@ -6,8 +6,12 @@
  * Time: 3:43 PM
  */
 
+// Display PHP Errors
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
+// Include Classes
 
 require 'vendor/autoload.php';
 require_once 'classes/DB.php';
@@ -18,3 +22,8 @@ require_once 'classes/AdminHelper.php';
 require_once 'classes/TrackFeatures.php';
 require_once 'classes/api/Face.php';
 require_once 'classes/api/API.php';
+
+// Load Sensitive Environment Variables
+
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();

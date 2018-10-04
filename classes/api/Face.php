@@ -18,8 +18,8 @@ class Face {
     private $returnFaceAttributes = "";
 
     public function __construct($image) {
-        $this->subscriptionKey = "4b60a27087dd44a683bfca479ee12eba";
-        $this->url = "https://eastus.api.cognitive.microsoft.com/face/v1.0/detect";
+        $this->subscriptionKey = getenv('MICROSOFT_FACE_SUBSCRIPTION_KEY');
+        $this->url = getenv('MICROSOFT_FACE_URL');
         $this->image = $image;
     }
 
