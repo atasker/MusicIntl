@@ -6,11 +6,6 @@
  * Time: 3:43 PM
  */
 
-$production = getenv('PRODUCTION_ENV');
-if (!empty($production)) {
-    echo $production;
-}
-
 // Display PHP Errors
 
 ini_set('display_errors', 1);
