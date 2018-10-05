@@ -22,3 +22,12 @@ require_once 'classes/AdminHelper.php';
 require_once 'classes/TrackFeatures.php';
 require_once 'classes/api/Face.php';
 require_once 'classes/api/API.php';
+
+// Load Environment Variables
+// In production we're using preset heroku config variables
+
+if (getenv('APP_ENV_PRODUCTION') == false) {
+    // We're local, so use dotenv
+    $dotenv = new Dotenv\Dotenv(__DIR__);
+    $dotenv->load();
+}
