@@ -12,11 +12,14 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 
 switch ($request_method) {
     case 'GET':
-        if (isset($_GET["name"])) {
-            $name = $_GET["name"];
-            API::get_last_name($name);
+        if (isset($_GET["coordinates"])) {
+            $coordinates = $_GET["coordinates"];
+            $weather_obj = new Weather($coordinates);
+            $weather_response = $weather_obj->getWeather();
+            echo $weather_response;
         } else {
-            API::get_last_name();
+            $no_weather = ['Error' => 'Unable to get weather'];
+            echo json_encode($no_weather);
         }
     break;
     default:
