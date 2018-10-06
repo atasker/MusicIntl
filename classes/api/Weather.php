@@ -15,7 +15,7 @@ class Weather {
 
     public function __construct($coordinates) {
         $this->coordinates = $coordinates;
-        $this->api_key = "798c89f153b1398a4ef9bb8cbf213b65";
+        $this->api_key = getenv('DARK_SKY_API_KEY');
     }
 
     public function getWeather() {

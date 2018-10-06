@@ -10,17 +10,24 @@ include __DIR__ . '/../../inc.php';
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
+$final_response = [];
+
 switch ($request_method) {
     case 'GET':
         if (isset($_GET["coordinates"])) {
             $coordinates = $_GET["coordinates"];
             $weather_obj = new Weather($coordinates);
             $weather_response = $weather_obj->getWeather();
-            echo $weather_response;
-        } else {
-            $no_weather = ['Error' => 'Unable to get weather'];
-            echo json_encode($no_weather);
+            if ($weather_response != false) {
+                $weather_array = json_decode($weather_response, true);
+                // If array has the key 'code', it means it returned an error
+                if (!array_key_exists('code', $weather_array)) {
+                    $temperature = round($weather_array['currently']['temperature']);
+                    $final_response['temperature'] = $temperature;
+                }
+            }
         }
+        echo json_encode($final_response);
     break;
     default:
         // Invalid Request Method
