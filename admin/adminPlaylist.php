@@ -241,7 +241,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
                             $id = $row['id'];
                             $email = $row['email'];
                             $date_pushed = $row['date_pushed'];
-                            $time_elapsed = AdminHelper::time_elapsed_string($date_pushed);
+                            $time_elapsed = ApplicationHelper::time_elapsed_string($date_pushed);
                             ?>
                             <tr>
                                 <td><?php echo $email; ?></td>

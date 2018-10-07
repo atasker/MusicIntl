@@ -26,9 +26,13 @@ $final_response = [];
 
 switch ($request_method) {
     case 'GET':
-        if (isset($_GET["coordinates"])) {
-            $coordinates = $_GET["coordinates"];
-            $weather_obj = new Weather($coordinates);
+        if (isset($_GET["lat"]) && isset($_GET["long"])) {
+
+            $lat = $_GET["lat"];
+            $long = $_GET["long"];
+
+            // Get temperature of users location
+            $weather_obj = new Weather($lat, $long);
             $weather_response = $weather_obj->getWeather();
             if ($weather_response != false) {
                 $weather_array = json_decode($weather_response, true);
@@ -38,6 +42,17 @@ switch ($request_method) {
                     $final_response['temperature'] = $temperature;
                 }
             }
+
+            // Check for proximity to a musical landmark
+            $location = new Location();
+            $landmarks = $location->nearbyLandmark($lat, $long);
+            if (!empty($landmarks)) {
+                $distances = array_column($landmarks, 'distance');
+                $closest = $landmarks[array_search(min($distances), $distances)];
+                $landmark = ['location' => $closest['location'], 'description' => $closest['description']];
+                $final_response['landmark'] = $landmark;
+            }
+
         }
         echo json_encode($final_response);
     break;

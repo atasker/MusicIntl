@@ -8,7 +8,7 @@
 
 include __DIR__ . '/../inc.php';
 
-class AdminHelper {
+class ApplicationHelper {
 
     public static function time_elapsed_string($datetime, $full = false) {
         $now = new DateTime;

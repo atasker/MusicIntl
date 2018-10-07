@@ -18,7 +18,7 @@ require_once 'classes/DB.php';
 require_once 'classes/Playlist.php';
 require_once 'classes/Track.php';
 require_once 'classes/User.php';
-require_once 'classes/AdminHelper.php';
+require_once 'classes/ApplicationHelper.php';
 require_once 'classes/TrackFeatures.php';
 require_once 'classes/api/Face.php';
 require_once 'classes/api/Weather.php';

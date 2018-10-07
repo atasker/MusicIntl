@@ -10,16 +10,18 @@ include __DIR__ . '/../../inc.php';
 
 class Weather {
 
-    private $coordinates;
+    private $lat;
+    private $long;
     private $api_key;
 
-    public function __construct($coordinates) {
-        $this->coordinates = $coordinates;
+    public function __construct($lat, $long) {
+        $this->lat = $lat;
+        $this->long = $long;
         $this->api_key = getenv('DARK_SKY_API_KEY');
     }
 
     public function getWeather() {
-        $dark_sky_url = "https://api.darksky.net/forecast/$this->api_key/$this->coordinates?exclude=flags,minutely,hourly,daily,alerts";
+        $dark_sky_url = "https://api.darksky.net/forecast/$this->api_key/$this->lat,$this->long?exclude=flags,minutely,hourly,daily,alerts";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_URL, $dark_sky_url);
