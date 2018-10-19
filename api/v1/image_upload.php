@@ -10,6 +10,8 @@ include __DIR__ . '/../../inc.php';
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
+$return_id = [];
+
 switch ($request_method) {
     case 'POST':
         if (isset($_POST["encoded_image"])) {
@@ -33,7 +35,11 @@ switch ($request_method) {
             // Save image file to uploads folder
             file_put_contents($upload_path, $decoded_image);
 
+            // Send unique ID back to Xcode for use in main API
+            $return_id['image_id'] = $unique_id;
+
         }
+        echo json_encode($return_id);
         break;
     default:
     // Invalid Request Method
