@@ -16,7 +16,7 @@ switch ($request_method) {
     case 'POST':
         if (isset($_POST["encoded_image"])) {
 
-            $return = ["firstName" => "Angus"];
+            $return = ["POSTSET?" => "Yes"];
             echo json_encode($return);
 
 //            $unique_id = time();
@@ -43,6 +43,8 @@ switch ($request_method) {
 
         }
         //echo json_encode($return_id);
+        $return = ["POSTSET" => "No"];
+        echo json_encode($return);
         break;
     default:
     // Invalid Request Method
