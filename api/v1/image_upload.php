@@ -16,7 +16,8 @@ switch ($request_method) {
     case 'POST':
         if (isset($_REQUEST["encoded_image"])) {
 
-            echo "hello sweet";
+            $return = ["firstName" => "Angus"];
+            echo json_encode($return);
 
 //            $unique_id = time();
 //            $encoded_image = $_POST["encoded_image"];
