@@ -41,7 +41,7 @@ switch ($request_method) {
 //            $return_id['image_id'] = $unique_id;
 
         }
-        echo json_encode($return_id);
+        //echo json_encode($return_id);
         break;
     default:
     // Invalid Request Method
