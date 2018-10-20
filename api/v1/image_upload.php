@@ -14,7 +14,7 @@ $return_id = [];
 
 switch ($request_method) {
     case 'POST':
-        if (isset($_POST["encoded_image"])) {
+        if (isset($_REQUEST["encoded_image"])) {
 
             $return = ["POSTSET?" => "Yes"];
             echo json_encode($return);
