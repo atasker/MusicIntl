@@ -14,10 +14,9 @@ $return_id = [];
 
 switch ($request_method) {
     case 'POST':
-        if (isset($_POST["encoded_image"])) {
-
-            echo "hello sweet";
-
+        echo "hello sweet";
+//        if (isset($_POST["encoded_image"])) {
+//
 //            $unique_id = time();
 //            $encoded_image = $_POST["encoded_image"];
 //            $upload_directory = __DIR__ . "/../../upload/images/";
@@ -39,9 +38,9 @@ switch ($request_method) {
 //
 //            // Send unique ID back to Xcode for use in main API
 //            $return_id['image_id'] = $unique_id;
-
-        }
-        //echo json_encode($return_id);
+//
+//        }
+//        echo json_encode($return_id);
         break;
     default:
     // Invalid Request Method
