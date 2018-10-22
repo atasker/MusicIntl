@@ -37,7 +37,7 @@ switch ($request_method) {
             file_put_contents($upload_path, $decoded_image);
 
             // Send unique ID back to Xcode for use in main API
-            $return_id['image_id'] = $unique_id;
+            $return_id = $unique_id;
 
         }
         echo json_encode($return_id);
