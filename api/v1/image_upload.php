@@ -16,7 +16,9 @@ switch ($request_method) {
     case 'POST':
         if (isset($_POST["encoded_image"])) {
 
-            $return = ["POSTSET" => "Yes"];
+            $received = $_POST["encoded_image"];
+            $length = strlen($received);
+            $return = ["Character count:" => $length];
             echo json_encode($return);
 
 //            $unique_id = time();
@@ -41,10 +43,11 @@ switch ($request_method) {
 //            // Send unique ID back to Xcode for use in main API
 //            $return_id['image_id'] = $unique_id;
 
+        } else {
+            $return = ["POSTSET" => "No"];
+            echo json_encode($return);
         }
         //echo json_encode($return_id);
-        $return = ["POSTSET" => "No"];
-        echo json_encode($return);
         break;
     default:
     // Invalid Request Method
