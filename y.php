@@ -1,5 +1,7 @@
 <?php
 
+// Test script for image uploading from iOS
+
 $url = "http://musicintl.herokuapp.com/api/v1/image_upload.php";
 $local = "localhost/musicintl/api/v1/image_upload.php";
 
