@@ -13,7 +13,7 @@
  * Voice
  * Spotify listening behavior
  * Image - Used to get emotions √
- * Date & Time
+ * Date & Time (need to get users timezone)
  * News
  * User ID - Used to get shares and likes/dislikes
  */
