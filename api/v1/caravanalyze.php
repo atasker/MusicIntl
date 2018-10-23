@@ -9,10 +9,10 @@
 /**
  * This file will serve as the Caravan API
  * We receive all data from the iOS app; and calculate music recommendations based on those parameters
- * Coordinates - Used to get weather and location
+ * Coordinates - Used to get weather and location √
  * Voice
  * Spotify listening behavior
- * Image - Used to get emotions
+ * Image - Used to get emotions √
  * Date & Time
  * News
  * User ID - Used to get shares and likes/dislikes
