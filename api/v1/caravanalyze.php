@@ -73,7 +73,7 @@ switch ($request_method) {
             }
 
         }
-        echo json_encode($final_response);
+        echo json_encode($final_response, JSON_UNESCAPED_SLASHES);
     break;
     default:
         // Invalid Request Method
