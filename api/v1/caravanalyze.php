@@ -33,7 +33,7 @@ switch ($request_method) {
             $image_id = $_GET["image_id"];
 
             // Analyze image
-            $image_url = "musicintl.herokuapp.com/upload/images/$image_id.jpg";
+            $image_url = "musicintl.herokuapp.com/upload/images/" . $image_id . ".jpg";
             $image = ['url' => $image_url];
             $face = new Face($image);
             $get_face = $face->analyzeAll()->getFaces();
