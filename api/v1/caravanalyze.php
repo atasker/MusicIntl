@@ -26,10 +26,28 @@ $final_response = [];
 
 switch ($request_method) {
     case 'GET':
-        if (isset($_GET["lat"]) && isset($_GET["long"])) {
+        if (isset($_GET["lat"]) && isset($_GET["long"]) && isset($_GET["image_id"])) {
 
             $lat = $_GET["lat"];
             $long = $_GET["long"];
+            $image_id = $_GET["image_id"];
+
+            // Analyze image
+            $image_url = "musicintl.herokuapp.com/upload/images/$image_id.jpg";
+            $image = ['url' => $image_url];
+            $face = new Face($image);
+            $get_face = $face->analyzeAll()->getFaces();
+            $analyze = json_decode($get_face, true);
+
+            // Return current emotional state, age & gender
+            if (!empty($analyze)) {
+                $age = $analyze[0]['faceAttributes']['age'];
+                $gender = $analyze[0]['faceAttributes']['gender'];
+                $emotion = $analyze[0]['faceAttributes']['emotion']; // Array
+
+                $face_data = ['age' => $age, 'gender' => $gender, 'emotions' => $emotion];
+                $final_response['face_data'] = $face_data;
+            }
 
             // Get temperature of users location
             $weather_obj = new Weather($lat, $long);
