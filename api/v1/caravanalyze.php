@@ -48,6 +48,7 @@ switch ($request_method) {
                 $face_data = ['age' => $age, 'gender' => $gender, 'emotions' => $emotion];
                 //$final_response['face_data'] = $face_data;
                 $final_response['image'] = $image_url;
+                $final_response['face_data'] = $analyze;
             }
 
             // Get temperature of users location
