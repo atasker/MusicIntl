@@ -1,6 +1,7 @@
 {
     "require": {
         "jwilsson/spotify-web-api-php": "^2.5",
-        "vlucas/phpdotenv": "^2.5"
+        "vlucas/phpdotenv": "^2.5",
+        "sendgrid/sendgrid": "~5.0.9"
     }
 }
