@@ -41,7 +41,7 @@ class ApplicationHelper {
 
     public static function getDominantEmotion($emotions) {
         $dominant = array_search(max($emotions), $emotions);
-        return $dominant;
+        return ucfirst($dominant);
     }
 
 }
