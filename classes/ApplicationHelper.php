@@ -39,4 +39,9 @@ class ApplicationHelper {
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
 
+    public static function getDominantEmotion($emotions) {
+        $dominant = array_search(max($emotions), $emotions);
+        return $dominant;
+    }
+
 }
